@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Tutor</title>
+</head>
+<body>
+    <div layout:fragment="contenido_dinamico">
+
+        <div id="tutor-detail" class="container-fluid">
+            <div class="row justify-content-center align-items-center" th:object="${tutor}">
+                <div class="col-md-4 text-center">
+                    <img class="tutor-detail-img" th:src="@{'../images/tutors/'+${tutor.foto}}" th:alt="*{nombreCompleto}">
+                </div>
+                <div class="col-md-4">
+                    <h1>[[*{nombreCompleto}]]</h1>
+                    <div class="stars" th:style="|--rating: ${tutor.calificacion}|" >
+                    </div>
+                    <p style="font-size: 22px; padding-top: 10px;">[[*{descripcion}]]</p>
+                    <h4 class="padded-top-xl costo"><strong>Costo por hora<span
+                            style="float: right;">S/.[[*{#numbers.formatDecimal(costo, 1,'COMMA',0,'POINT')}]]</span></strong>
+                    </h4>
+                    <div class="padded-top-xl"> <button type="submit" class="btn-main-filter"
+                                                        style="width:100%; padding-top: 12px; padding-bottom: 12px; font-weight: bold; font-size: 20px">Inscribirse</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+<div layout:fragment="contenido_dinamico">
+
+    <div id="hero" class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col">
+                <div class="padded-left">
+                    <h1>Aprende Inglés en Private Teacher</h1>
+                    <p class="text-right padded-top" style="font-size: var(--font-ms)">En Private Teacher puedes aprender inglés especializado,
+                        de acuerdo a lo que necesites en tu carrera. Tenemos a profesores extranjeros y con maestrías, además de certificados
+                        validados por Cambridge English.</p>
+                </div>
+            </div>
+            <div class="col">
+                <img class="pic" th:src="@{/images/image-1.png}" alt="">
+            </div>
+        </div>
+    </div>
+    <div id="service" class="container-fluid">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-4">
+                <img class="pic" th:src="@{/images/image-2.png}" width="420px" height="300px" alt="">
+            </div>
+            <div class="col-4">
+                <div>
+                    <h1>¡Busca a tus tutores <br> y aprende ya!</h1>
+                        <p style="font-size: var(--font-ms)" class="text-right padded-top padded-bottom">
+                            Los mejores tutores se encuentran en Private Teacher. Puedes encontrar tutores especializados en
+                            Negocios, Medicina e incluso Arquitectura. ¿Qué esperas para estudiar con nosotros?
+                        </p>
+                        <button class="btn-main"> <a href="/tutores">Buscar</a> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="last-tutors" class="container-fluid padded-bottom">
+        <div class="text-center padded-bottom">
+            <h2>Cursos disponibles</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 text-center">
+                <p class="p-subtitle">Les presentamos los cursos de especialización que tenemos, en busca de un aprendizaje íntegro.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center text-center padded-top">
+            <div class="row justify-content-center align-items-center padded-bottom">
+                <div class="tutor-card col-3">
+                    <img height="64px" width="64px" th:src="@{/images/law.png}" alt="">
+                    <p>English for Law</p>
+                </div>
+                <div class="tutor-card col-3">
+                    <img height="64px" width="64px" th:src="@{/images/engineering.png}" alt="">
+                    <p>English for Engineering</p>
+                </div>
+                <div class="tutor-card col-3">
+                    <img height="64px" width="64px" th:src="@{/images/business.png}" alt="">
+                    <p>English for Business</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center padded-bottom">
+                <div class="tutor-card col-3">
+                    <img height="64px" width="64px" th:src="@{/images/architecture.png}" alt="">
+                    <p>English for Architecture</p>
+                </div>
+                <div class="tutor-card col-3">
+                    <img height="64px" width="64px" th:src="@{/images/medicine.png}" alt="">
+                    <p>English for Medicine</p>
+                </div>
+                <div class="tutor-card col-3">
+                    <img height="64px" width="64px" th:src="@{/images/test.png}" alt="">
+                    <p>Exam Preparation</p>
+                </div>
+            </div>
+            <div class="padded-bottom">
+                <button class="btn-main"><a href="/tutores">Ver tutores</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="tutor" class="container-fluid padded-bottom">
+        <div class="row justify-content-center align-items-center">
+            <div class="col">
+                <div class="padded-left">
+                    <h1>¿Quieres ser un tutor de Private Teacher?</h1>
+                    <p style="font-size: var(--font-ms)" class="text-right padded-top padded-bottom">Si deseas formar parte del equipo de Private Teacher,
+                    regístrate aquí y trabaja con nosotros. </p>
+                    <div class="padded-bottom">
+                        <button class="btn-main"><a href="registro-profesor.html">Regístrate aquí</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-center">
+                <img class="pic" th:src="@{/images/image-3.png}" width="400px" height="488px" alt="">
+            </div>
+        </div>
+    </div>
+    </main>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+</body>
+</html>

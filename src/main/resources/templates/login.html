@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+
+<body>
+<div layout:fragment="contenido_dinamico">
+
+    <main>
+        <div class="container-fluid registro-alumno padded-top-xl">
+            <div class="text-center padded-bottom">
+                <h1>Inicia Sesión</h1>
+            </div>
+            <form action="" method="post">
+                <div class="row justify-content-center padded-top-xl">
+                    <div class="col-4">
+                        <div class="padded-top">
+                            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="padded-top">
+                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="text-center padded-top-xl">
+                            <button type="submit" class="btn-main-register">Ingresar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+
+</html>

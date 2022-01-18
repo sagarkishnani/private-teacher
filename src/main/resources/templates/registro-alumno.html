@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+
+<body>
+<div layout:fragment="contenido_dinamico">
+
+    <main>
+        <div class="container-fluid registro-alumno padded-top-xl">
+            <div class="text-center padded-bottom">
+                <h1>Regístrate</h1>
+            </div>
+            <form action="" method="post">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div class="padded-top">
+                            <label for="dni" class="form-label">DNI</label>
+                            <input type="text" class="form-control" id="dni">
+                        </div>
+                        <div class="padded-top">
+                            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="row g-2 padded-top">
+                            <div class="col-sm-6">
+                                <label for="nombres" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="nombres">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="apellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos">
+                            </div>
+                        </div>
+                        <div class="row g-2 padded-top">
+                            <div class="col-sm-8">
+                                <label for="celular" class="form-label">Celular</label>
+                                <input type="number" class="form-control" id="celular">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="text" id="edad" class="form-control" placeholder="Edad" aria-label="Edad">
+                            </div>
+                        </div>
+                        <div class="row g-2 padded-top">
+                            <div class="col-sm-6">
+                                <label for="nivel" class="form-label">Nivel de Inglés</label>
+                                <select class="form-select" id="nivel">
+                                    <option value="1">Básico</option>
+                                    <option value="2">Intermedio</option>
+                                    <option value="3">Avanzado</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="edad" class="form-label">Cursos de interés</label>
+                                <select class="form-select">
+                                    <option value="1">English for Business</option>
+                                    <option value="2">English for Law</option>
+                                    <option value="3">English for Engineering</option>
+                                    <option value="4">English for Architecture</option>
+                                    <option value="5">English for Medicine</option>
+                                    <option value="6">Exam Preparation</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-center padded-top-xl">
+                            <button type="submit" class="btn-main-register">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
+
+</html>
