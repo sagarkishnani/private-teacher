@@ -1,30 +1,27 @@
 package com.pt.privateteacher.model;
 
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
 @Data
+@Table(name = "estudiante")
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idAlumno")
-    private Integer idAlumno;
+    @Column(name = "idestudiante")
+    private Integer idestudiante;
 
-    @Size(max=8)
     @Column(name="dni")
     private Integer dni;
 
     @Enumerated(EnumType.STRING)
-    private Student.Rol rol;
+    private Rol rol;
     public enum Rol{
-        ALUMNO
+        ESTUDIANTE
     }
 
     @Column(name="nombres")
@@ -33,7 +30,9 @@ public class Student {
     @Column(name="apellidos")
     private String apellidos;
 
-    @Size(max=11)
+    @Column(name = "nom_completo")
+    private String nombreCompleto;
+
     @Column(name="celular")
     private Integer celular;
 
@@ -43,13 +42,14 @@ public class Student {
     @Column(name="nivel")
     private String nivel;
 
-    @Column(name="curso")
-    private String curso;
+    @Column(name="interes")
+    private String interes;
 
     @Email
     @Column(name="email")
     private String email;
 
+    @Column(name="password")
     private String password;
 
     @NotBlank
@@ -62,6 +62,7 @@ public class Student {
 
     @PrePersist
     @PreUpdate
+    @Column(name = "nom_completo")
     void asignarNombreCompleto()
     {
         String nombreCompleto = nombres + " " + apellidos;

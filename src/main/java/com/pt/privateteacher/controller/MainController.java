@@ -10,13 +10,4 @@ public class MainController {
         return "contacto";
     }
 
-    @RequestMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @RequestMapping("/registrar")
-    public String registrar() {
-        return "registro-alumno";
-    }
 }

@@ -10,63 +10,66 @@
 
 <body>
 <div layout:fragment="contenido_dinamico">
-
-    <main>
-        <div class="container-fluid registro-alumno padded-top-xl">
+        <div class="container-fluid registro-alumno padded-top-xl" style="padding-bottom: var(--pad-xxxxxl)">
             <div class="text-center padded-bottom">
                 <h1>Regístrate</h1>
             </div>
-            <form action="" method="post">
+            <form th:action="@{''}" method="post" th:object="${student}">
                 <div class="row justify-content-center">
                     <div class="col-4">
                         <div class="padded-top">
                             <label for="dni" class="form-label">DNI</label>
-                            <input type="text" class="form-control" id="dni">
+                            <input type="number" class="form-control" id="dni" th:field="*{dni}">
                         </div>
                         <div class="padded-top">
                             <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                                   aria-describedby="emailHelp" th:field="*{email}">
                         </div>
                         <div class="row g-2 padded-top">
                             <div class="col-sm-6">
                                 <label for="nombres" class="form-label">Nombres</label>
-                                <input type="text" class="form-control" id="nombres">
+                                <input type="text" class="form-control" id="nombres" th:field="*{nombres}">
                             </div>
                             <div class="col-sm-6">
                                 <label for="apellidos" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="apellidos">
+                                <input type="text" class="form-control" id="apellidos" th:field="*{apellidos}">
                             </div>
                         </div>
                         <div class="row g-2 padded-top">
                             <div class="col-sm-8">
                                 <label for="celular" class="form-label">Celular</label>
-                                <input type="number" class="form-control" id="celular">
+                                <input type="number" class="form-control" id="celular" th:field="*{celular}">
                             </div>
                             <div class="col-sm-4">
                                 <label for="edad" class="form-label">Edad</label>
-                                <input type="text" id="edad" class="form-control" placeholder="Edad" aria-label="Edad">
+                                <input type="number" class="form-control" id="edad" placeholder="Edad" aria-label="Edad" th:field="*{edad}">
                             </div>
                         </div>
                         <div class="row g-2 padded-top">
                             <div class="col-sm-6">
-                                <label for="nivel" class="form-label">Nivel de Inglés</label>
-                                <select class="form-select" id="nivel">
-                                    <option value="1">Básico</option>
-                                    <option value="2">Intermedio</option>
-                                    <option value="3">Avanzado</option>
+                                <label class="form-label">Nivel de Inglés</label>
+                                <select name="nivel" class="form-select">
+                                    <option th:each="nivel : ${nivelList}" th:text="${nivel}"></option>
                                 </select>
                             </div>
                             <div class="col-sm-6">
-                                <label for="edad" class="form-label">Cursos de interés</label>
-                                <select class="form-select">
-                                    <option value="1">English for Business</option>
-                                    <option value="2">English for Law</option>
-                                    <option value="3">English for Engineering</option>
-                                    <option value="4">English for Architecture</option>
-                                    <option value="5">English for Medicine</option>
-                                    <option value="6">Exam Preparation</option>
+                                <label class="form-label">Cursos de interés</label>
+                                <select name="interes" class="form-select">
+                                    <option th:each="interes : ${interesList}" th:text="${interes}"></option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row g-2 padded-top">
+                            <div class="mb-2">
+                                <label for="password1">Contraseña</label>
+                                <input type="password" id="password1" class="form-control" th:field="*{password1}" th:errorclass="is-invalid">
+                                <div th:errors="*{password1}" th:if="${#fields.hasErrors('password1')}" class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-2">
+                                <label for="password2">Repite la contraseña</label>
+                                <input type="password" id="password2" class="form-control" th:field="*{password2}" th:errorclass="is-invalid">
+                                <div th:errors="*{password2}" th:if="${#fields.hasErrors('password2')}" class="invalid-feedback"></div>
                             </div>
                         </div>
                         <div class="text-center padded-top-xl">
@@ -76,7 +79,6 @@
                 </div>
             </form>
         </div>
-    </main>
 </div>
 </body>
 
