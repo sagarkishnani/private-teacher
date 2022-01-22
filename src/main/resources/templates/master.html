@@ -32,8 +32,20 @@
             </div>
         </div>
         <div class="navbar-items-right">
-            <a style="font-weight: bold" class="btn-register" href="/registrar">Registrarse</a>
-            <a style="font-weight: bold" class="btn-login" href="/login">Ingresar</a>
+            <div sec:authorize="!isAuthenticated()">
+                <a style="font-weight: bold" class="btn-register" href="/registro-alumno">Registrarse</a>
+                <a style="font-weight: bold" class="btn-login" href="/login">Ingresar</a>
+            </div>
+            <div class="dropdown" sec:authorize="isAuthenticated()">
+                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                   data-bs-toggle="dropdown" aria-expanded="false" sec:authentication="principal.nombre">
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="/usuarios/cambiarpassword">Cambiar Password</a></li>
+                    <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

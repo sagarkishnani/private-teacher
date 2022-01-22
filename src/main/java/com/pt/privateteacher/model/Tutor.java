@@ -18,7 +18,11 @@ public class Tutor {
     @Column(name = "idtutor")
     private Integer idtutor;
 
-    @Size(max=8)
+    @ManyToOne
+    @JoinColumn(name = "idusuario", referencedColumnName = "idusuario")
+    private Usuario usuario;
+
+
     @Column(name="dni")
     private Integer dni;
 
@@ -37,12 +41,15 @@ public class Tutor {
     @Column(name = "nom_completo")
     private String nombreCompleto;
 
-    @Size(max=11)
+    @Column(name = "edad")
+    private Integer edad;
+
     @Column(name="celular")
     private Integer celular;
 
     @Column(name="costo")
     private Double costo;
+
 
     @Column(name="titulo")
     private String titulo;
@@ -50,14 +57,23 @@ public class Tutor {
     @Column(name="descripcion")
     private String descripcion;
 
+    /*
     @Column(name="calificacion")
-    private Integer calificacion;
+    private Integer calificacion;*/
 
     @Email
     @Column(name="email")
     private String email;
 
-    private String password;
+    /*private String password;
+
+    @NotBlank
+    @Transient
+    private String password1;
+
+    @NotBlank
+    @Transient
+    private String password2;*/
 
     @PrePersist
     @PreUpdate
@@ -69,4 +85,6 @@ public class Tutor {
     @Column(name="foto")
     private String foto;
 
+    @Transient
+    private MultipartFile imagen;
 }
