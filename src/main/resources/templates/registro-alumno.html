@@ -17,10 +17,7 @@
             <form th:action="@{''}" method="post" th:object="${student}">
                 <div class="row justify-content-center">
                     <div class="col-4">
-                        <div class="padded-top">
-                            <label for="dni" class="form-label">DNI</label>
-                            <input type="number" class="form-control" id="dni" th:field="*{dni}">
-                        </div>
+
                         <div class="padded-top">
                             <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
                             <input type="email" class="form-control" id="exampleInputEmail1"
@@ -37,28 +34,10 @@
                             </div>
                         </div>
                         <div class="row g-2 padded-top">
-                            <div class="col-sm-8">
-                                <label for="celular" class="form-label">Celular</label>
-                                <input type="number" class="form-control" id="celular" th:field="*{celular}">
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="edad" class="form-label">Edad</label>
-                                <input type="number" class="form-control" id="edad" placeholder="Edad" aria-label="Edad" th:field="*{edad}">
-                            </div>
+
                         </div>
                         <div class="row g-2 padded-top">
-                            <div class="col-sm-6">
-                                <label class="form-label">Nivel de Inglés</label>
-                                <select name="nivel" class="form-select">
-                                    <option th:each="nivel : ${nivelList}" th:text="${nivel}"></option>
-                                </select>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label">Cursos de interés</label>
-                                <select name="interes" class="form-select">
-                                    <option th:each="interes : ${interesList}" th:text="${interes}"></option>
-                                </select>
-                            </div>
+
                         </div>
                         <div class="row g-2 padded-top">
                             <div class="mb-2">

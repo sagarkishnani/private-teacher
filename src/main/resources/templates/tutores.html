@@ -37,7 +37,7 @@
                         <div class="row justify-content-around padded-bottom-xl">
                             <div th:each="tutor : ${tutores}" th:object="${tutor}" class="col-4 padded-bottom">
                                 <div class="card" style="width: 22rem; height: 32rem;">
-                                    <img th:src="@{'images/tutors/'+${tutor.foto}}" height="300px" class="card-img-top" style="object-fit: cover" alt="...">
+                                    <img th:src="@{/media/{foto}(foto=*{foto})}" height="300px" class="card-img-top" style="object-fit: cover" th:alt="*{nombreCompleto}">
                                     <div class="card-body">
                                         <h5 class="card-title" style="font-weight: bold">[[*{nombreCompleto}]]<span style="  padding: var(--pad-xs) !important;
   float: right;

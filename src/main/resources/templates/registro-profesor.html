@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
 
 <head>
     <meta charset="UTF-8">
@@ -14,79 +17,75 @@
 </head>
 
 <body>
-
-    <main>
-        <div class="container-fluid registro-alumno padded-top-xl">
-            <div class="text-center padded-bottom">
-                <h1>Regístrate</h1>
-            </div>
-            <form action="" method="post">
-                <div class="row justify-content-center">
-                    <div class="col-6">
-                        <div class="row g-2">
-                            <div class="col-sm-4">
-                                <label for="dni" class="form-label">DNI</label>
-                                <input type="text" class="form-control" id="dni">
+    <div layout:fragment="contenido_dinamico">
+        <main>
+            <div class="container-fluid registro-alumno padded-top-xl">
+                <div class="text-center padded-bottom">
+                    <h1>Regístrate</h1>
+                </div>
+                <form th:action="@{''}" method="post" th:object="${tutor}" enctype="multipart/form-data">
+                    <div class="row justify-content-center">
+                        <div class="col-6">
+                            <div class="row g-2">
+                                <div class="col-sm-4">
+                                    <label for="dni" class="form-label">DNI</label>
+                                    <input type="number" class="form-control" id="dni" th:field="*{dni}">
+                                </div>
+                                <div class="col-sm-8">
+                                    <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" th:field="*{email}"
+                                        aria-describedby="emailHelp">
+                                </div>
                             </div>
-                            <div class="col-sm-8">
-                                <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
+                            <div class="row g-2 padded-top">
+                                <div class="col-sm-6">
+                                    <label for="nombres" class="form-label">Nombres</label>
+                                    <input type="text" class="form-control" id="nombres" th:field="*{nombres}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="apellidos" class="form-label">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellidos" th:field="*{apellidos}">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row g-2 padded-top">
-                            <div class="col-sm-6">
-                                <label for="nombres" class="form-label">Nombres</label>
-                                <input type="text" class="form-control" id="nombres">
+                            <div class="row g-2 padded-top">
+                                <div class="col-sm-4">
+                                    <label for="celular" class="form-label">Celular</label>
+                                    <input type="number" class="form-control" id="celular" th:field="*{celular}">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="edad" class="form-label">Edad</label>
+                                    <input id="edad" type="number" class="form-control" aria-label="Edad" th:field="*{edad}">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="costo" class="form-label">Costo x hora</label>
+                                    <input type="number" class="form-control" id="costo" th:field="*{costo}">
+                                </div>
                             </div>
-                            <div class="col-sm-6">
-                                <label for="apellidos" class="form-label">Apellidos</label>
-                                <input type="text" class="form-control" id="apellidos">
+                            <div class="row g-2 padded-top">
+                                <div class="col-sm-8">
+                                    <label for="formFile" class="form-label">Foto</label>
+                                    <input class="form-control" type="file" id="formFile" accept="image/*" th:field="*{imagen}">
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="titulo" class="form-label">Curso que enseña</label>
+                                    <select id="titulo" name="titulo" class="form-select">
+                                        <option th:each="titulo : ${tituloList}" th:text="${titulo}"></option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row g-2 padded-top">
-                            <div class="col-sm-4">
-                                <label for="celular" class="form-label">Celular</label>
-                                <input type="number" class="form-control" id="celular">
+                            <div class="padded-top">
+                                <label for="exampleFormControlTextarea1" class="form-label">Descripción personal</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" th:field="*{descripcion}"></textarea>
                             </div>
-                            <div class="col-sm-4">
-                                <label for="edad" class="form-label">Edad</label>
-                                <input type="text" class="form-control" aria-label="Edad">
+                            <div class="text-center padded-top-xl">
+                                <button type="submit" class="btn-main-register">Registrar</button>
                             </div>
-                            <div class="col-sm-4">
-                                <label for="costo" class="form-label">Costo x hora</label>
-                                <input type="number" class="form-control" id="costo">
-                            </div>
-                        </div>
-                        <div class="row g-2 padded-top">
-                            <div class="col-sm-8">
-                                <label for="formFile" class="form-label">Foto</label>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="edad" class="form-label">Curso que enseña</label>
-                                <select class="form-select">
-                                    <option value="1">English for Business</option>
-                                    <option value="2">English for Law</option>
-                                    <option value="3">English for Engineering</option>
-                                    <option value="4">English for Architecture</option>
-                                    <option value="5">English for Medicine</option>
-                                    <option value="6">Exam Preparation</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="padded-top">
-                            <label for="exampleFormControlTextarea1" class="form-label">Descripción personal</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
-                        </div>
-                        <div class="text-center padded-top-xl">
-                            <button type="submit" class="btn-main-register">Registrar</button>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
-    </main>
+                </form>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>
