@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+
+<body>
+<div layout:fragment="contenido_dinamico">
+        <div class="container-fluid registro-alumno padded-top-xl" style="padding-bottom: var(--pad-xxxxxl)">
+            <div class="text-center padded-bottom">
+                <h1>Registro de Administradores</h1>
+            </div>
+            <form th:action="@{''}" method="post" th:object="${admin}">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div class="padded-top">
+                            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" th:field="*{email}" th:errorclass="is-invalid">
+                            <div th:errors="*{email}" th:if="${#fields.hasErrors('email')}" class="invalid-feedback"></div>
+                        </div>
+                        <div class="row g-2 padded-top">
+                            <div class="col-sm-6">
+                                <label for="nombres" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="nombres" th:field="*{nombres}" th:errorclass="is-invalid">
+                                <div th:errors="*{nombres}" th:if="${#fields.hasErrors('nombres')}" class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="apellidos" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellidos" th:field="*{apellidos}" th:errorclass="is-invalid">
+                                <div th:errors="*{apellidos}" th:if="${#fields.hasErrors('apellidos')}" class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="row g-2 padded-top">
+                            <div class="mb-2">
+                                <label for="password1">Contraseña</label>
+                                <input type="password" id="password1" class="form-control" th:field="*{password1}" th:errorclass="is-invalid">
+                                <div th:errors="*{password1}" th:if="${#fields.hasErrors('password1')}" class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-2">
+                                <label for="password2">Repite la contraseña</label>
+                                <input type="password" id="password2" class="form-control" th:field="*{password2}" th:errorclass="is-invalid">
+                                <div th:errors="*{password2}" th:if="${#fields.hasErrors('password2')}" class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                        <div class="text-center padded-top-xl">
+                            <button type="submit" class="btn-main-register">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+</body>
+
+</html>

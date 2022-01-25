@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador de Tutores</title></head>
+
+<body>
+
+<main>
+    <div class="container mt-5" layout:fragment="contenido_dinamico">
+        <div class="text-center padded-bottom-xl">
+            <h1>Administración de Tutores</h1>
+        </div>
+        <div th:if="${ msgExito ne null }" class="alert alert-success alert-dismissible">
+            [[${msgExito}]]
+            <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
+        </div>
+
+        <div class="text-end">
+            <button class="btn-main-details" style="margin-left: 8px";><a href="/admin/usuarios/nuevo">
+                Agregar tutor
+            </a></button>
+            <button class="btn-main-details"><a href="/registro-admin">
+                Agregar administrador
+            </a></button>
+        </div>
+
+        <form action="" class="my-3 padded-bottom-xl">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="input-group">
+                        <input type="search" name="nombre" class="form-control"
+                               placeholder="Buscar tutor por nombre" th:value="${param.titulo}">
+                        <button class="btn-main-details">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-hover table-responsive">
+            <thead>
+            <tr>
+                <th></th>
+                <th>DNI</th>
+                <th>NOMBRE</th>
+                <th>CORREO</th>
+                <th>COSTO</th>
+                <th>CELULAR</th>
+                <th>OPCIONES</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="tutor : ${tutores}" th:object="${tutor}">
+                <td class="text-center">
+                    <a th:href="@{/media/{imagen}(imagen=*{imagen})}" data-fancybox>
+                        <img th:src="@{/media/{imagen}(imagen=*{imagen})}"
+                             th:if="*{imagen ne null}" alt="" width="120"
+                             class="img-thumbnail">
+                    </a>
+                </td>
+
+                <td>
+                    <div th:text="*{dni}" class="fw-bold"></div>
+                </td>
+
+                <td>
+                    <div th:text="*{nombreCompleto}" class="fw-bold"></div>
+                </td>
+
+                <td th:text="*{email}"></td>
+                <td th:text="*{costo}"></td>
+                <td th:text="*{celular}"></td>
+
+                <td>
+
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-primary"
+                           title="Editar">
+                            <i class="fa fa-edit"></i>
+                        </a>
+
+                        <a href="#" onclick="eliminar(this)" class="btn btn-danger" title="Eliminar">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                        <form method="post" class="d-none">
+                        </form>
+                    </div>
+
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <nav>
+                <div sd:pagination-summary="">info</div>
+
+                <ul class="pagination mt-3" sd:pagination="full">
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+</main>
+
+<footer>
+    <div class="container-fluid padded-bottom">
+        <div class="row justify-content-center padded-bottom">
+            <div class="col-md-3">
+                <a class="footer-brand" href="#">Private Teacher</a>
+            </div>
+            <div class="col-md-3">
+                <a class="footer-title" href="#">Tutores</a>
+            </div>
+            <div class="col-md-3">
+                <a class="footer-title" href="#">Contacto</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <p class="footer-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id
+                    necessitatibus possimus ipsum odio
+                    error pariatur laborum distinctio ab cupiditate.</p>
+            </div>
+            <div class="col-md-3">
+                2 of 3
+            </div>
+            <div class="col-md-3">
+                3 of 3
+            </div>
+        </div>
+    </div>
+    <div class="padded-top">
+        <p class="text-center derechos">Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+</script>
+</body>
+
+</html>
