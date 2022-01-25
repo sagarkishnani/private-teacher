@@ -45,6 +45,31 @@ h2 {
   font-weight: 600 !important;
 }
 
+table {
+  border: none !important;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+tbody {
+  border: none !important;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+th {
+  border: none !important;
+  font-family: var(--poppins);
+}
+
+td {
+  border: none !important;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  font-family: var(--raleway);
+}
+
+thead {
+  border: none !important;
+}
+
 /* GENERAL STYLES */
 .padded-left {
   padding-left: var(--pad-xxxxxl);

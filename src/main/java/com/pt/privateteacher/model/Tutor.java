@@ -1,6 +1,7 @@
 package com.pt.privateteacher.model;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,8 +19,9 @@ public class Tutor {
     @Column(name = "idtutor")
     private Integer idtutor;
 
-    @Size(max=8)
-    @Column(name="dni")
+    @NotNull
+    @Min(10000000)
+    @Max(99999999)
     private Integer dni;
 
     @Enumerated(EnumType.STRING)
@@ -28,45 +30,56 @@ public class Tutor {
         TUTOR
     }
 
-    @Column(name="nombres")
+    @NotBlank
     private String nombres;
 
-    @Column(name="apellidos")
+    @NotBlank
     private String apellidos;
 
     @Column(name = "nom_completo")
     private String nombreCompleto;
 
-    @Size(max=11)
-    @Column(name="celular")
+    @NotNull
+    private Integer edad;
+
+    @NotNull
+    @Min(1000000)
     private Integer celular;
 
-    @Column(name="costo")
+    @NotNull
     private Double costo;
 
-    @Column(name="titulo")
     private String titulo;
 
-    @Column(name="descripcion")
+    @NotBlank
     private String descripcion;
 
     @Column(name="calificacion")
     private Integer calificacion;
 
+    @NotEmpty
     @Email
-    @Column(name="email")
     private String email;
 
     private String password;
+
+    @NotBlank
+    @Transient
+    private String password1;
+
+    @NotBlank
+    @Transient
+    private String password2;
 
     @PrePersist
     @PreUpdate
     void asignarNombreCompleto()
     {
-        String nombreCompleto = nombres + " " + apellidos;
+        nombreCompleto = nombres + " " + apellidos;
     }
 
-    @Column(name="foto")
     private String foto;
 
+    @Transient
+    private MultipartFile imagen;
 }

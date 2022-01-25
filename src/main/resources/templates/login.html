@@ -16,17 +16,17 @@
             <div class="text-center padded-bottom">
                 <h1>Inicia Sesión</h1>
             </div>
-            <form action="" method="post">
+            <form th:action="@{''}" method="post">
                 <div class="row justify-content-center padded-top-xl">
                     <div class="col-4">
                         <div class="padded-top">
-                            <label for="exampleInputEmail1" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" name="username"
                                 aria-describedby="emailHelp">
                         </div>
                         <div class="padded-top">
-                            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="text-center padded-top-xl">
                             <button type="submit" class="btn-main-register">Ingresar</button>

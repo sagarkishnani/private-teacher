@@ -3,8 +3,7 @@ package com.pt.privateteacher.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 
 @Entity
 @Data
@@ -15,7 +14,9 @@ public class Student {
     @Column(name = "idestudiante")
     private Integer idestudiante;
 
-    @Column(name="dni")
+    @NotNull
+    @Min(10000000)
+    @Max(99999999)
     private Integer dni;
 
     @Enumerated(EnumType.STRING)
@@ -24,32 +25,30 @@ public class Student {
         ESTUDIANTE
     }
 
-    @Column(name="nombres")
+    @NotBlank
     private String nombres;
 
-    @Column(name="apellidos")
+    @NotBlank
     private String apellidos;
 
     @Column(name = "nom_completo")
     private String nombreCompleto;
 
-    @Column(name="celular")
+    @NotNull
+    @Min(1000000)
     private Integer celular;
 
-    @Column(name = "edad")
+    @NotNull
     private Integer edad;
 
-    @Column(name="nivel")
     private String nivel;
 
-    @Column(name="interes")
     private String interes;
 
+    @NotEmpty
     @Email
-    @Column(name="email")
     private String email;
 
-    @Column(name="password")
     private String password;
 
     @NotBlank
@@ -65,6 +64,6 @@ public class Student {
     @Column(name = "nom_completo")
     void asignarNombreCompleto()
     {
-        String nombreCompleto = nombres + " " + apellidos;
+        nombreCompleto = nombres + " " + apellidos;
     }
 }
