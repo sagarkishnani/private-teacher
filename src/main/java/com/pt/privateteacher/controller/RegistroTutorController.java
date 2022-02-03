@@ -31,6 +31,19 @@ public class RegistroTutorController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
+    String[] words = {"extorsion", "robo", "agresion", "asesinato", "violacion", "amenaza"};
+
+    public static boolean containsWords(String inputString, String[] items){
+        boolean found = false;
+        for (String item : items) {
+            if(inputString.contains(item)) {
+                found = true;
+                break;
+            }
+        }
+        return found;
+    }
+
     static List<String> tituloList = null;
     static {
         tituloList = new ArrayList<>();
@@ -68,8 +81,28 @@ public class RegistroTutorController {
             bindingResult.rejectValue("email", "EmailAlreadyExists");
         }
 
+        if(tutor.getImagen().isEmpty())
+        {
+            bindingResult.rejectValue("imagen", "MultipartNotEmpty");
+        }
+
         if (!tutor.getPassword1().equals(tutor.getPassword2())) {
-                bindingResult.rejectValue("password1", "PasswordNotEquals");
+            bindingResult.rejectValue("password1", "PasswordNotEquals");
+        }
+
+        if (!tutor.getPassword2().equals(tutor.getPassword1())) {
+            bindingResult.rejectValue("password1", "PasswordNotEquals");
+        }
+
+        String text = tutor.getDescripcion().toLowerCase();
+        if (containsWords(text, words) == true){
+            bindingResult.rejectValue("descripcion", "WordsNotAllowed");
+        }
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("tutor", tutor);
+            model.addAttribute("tituloList", tituloList);
+            return "registro-profesor";
         }
 
         tutor.setPassword(passwordEncoder.encode(tutor.getPassword1()));

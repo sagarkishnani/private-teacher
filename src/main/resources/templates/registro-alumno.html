@@ -19,7 +19,7 @@
                     <div class="col-4">
                         <div class="padded-top">
                             <label for="dni" class="form-label">DNI</label>
-                            <input type="number" class="form-control" id="dni" th:field="*{dni}" th:errorclass="is-invalid">
+                            <input type="text" class="form-control" id="dni" th:field="*{dni}" th:errorclass="is-invalid">
                             <div th:errors="*{dni}" th:if="${#fields.hasErrors('dni')}" class="invalid-feedback"></div>
                         </div>
                         <div class="padded-top">
@@ -43,13 +43,13 @@
                         <div class="row g-2 padded-top">
                             <div class="col-sm-8">
                                 <label for="celular" class="form-label">Celular</label>
-                                <input type="number" class="form-control" id="celular" th:field="*{celular}" th:errorclass="is-invalid">
+                                <input type="text" class="form-control" id="celular" th:field="*{celular}" th:errorclass="is-invalid">
                                 <div th:errors="*{celular}" th:if="${#fields.hasErrors('celular')}" class="invalid-feedback"></div>
                             </div>
                             <div class="col-sm-4">
-                                <label for="edad" class="form-label">Edad</label>
-                                <input type="number" class="form-control" id="edad" placeholder="Edad" aria-label="Edad" th:field="*{edad}" th:errorclass="is-invalid">
-                                <div th:errors="*{edad}" th:if="${#fields.hasErrors('edad')}" class="invalid-feedback"></div>
+                                <label class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" id="fechanacimiento" th:field="*{fechanacimiento}" th:errorclass="is-invalid">
+                                <div th:errors="*{fechanacimiento}" th:if="${#fields.hasErrors('fechanacimiento')}" class="invalid-feedback"></div>
                             </div>
                         </div>
                         <div class="row g-2 padded-top">

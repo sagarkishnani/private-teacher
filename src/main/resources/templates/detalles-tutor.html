@@ -12,7 +12,7 @@
         <div id="tutor-detail" class="container-fluid">
             <div class="row justify-content-center align-items-center" th:object="${tutor}">
                 <div class="col-md-4 text-center">
-                    <img class="tutor-detail-img" th:src="@{'../images/tutors/'+${tutor.foto}}" th:alt="*{nombreCompleto}">
+                    <img class="tutor-detail-img" style="width: 400px; height: 300px; object-fit: cover" th:src="@{/media/{foto}(foto=*{foto})}" th:alt="*{nombreCompleto}">
                 </div>
                 <div class="col-md-4">
                     <h1>[[*{nombreCompleto}]]</h1>

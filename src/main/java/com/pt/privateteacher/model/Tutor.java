@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 
@@ -20,9 +21,9 @@ public class Tutor {
     private Integer idtutor;
 
     @NotNull
-    @Min(10000000)
-    @Max(99999999)
-    private Integer dni;
+    @Size(min = 8, max = 8, message = "Este campo debe tener 8 digitos")
+    @Pattern(regexp = "^[0-9]*")
+    private String dni;
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
@@ -40,11 +41,12 @@ public class Tutor {
     private String nombreCompleto;
 
     @NotNull
-    private Integer edad;
+    private String fechanacimiento;
 
     @NotNull
-    @Min(1000000)
-    private Integer celular;
+    @Size(min = 7, max = 11, message = "Este campo debe tener entre 7 y 11 digitos")
+    @Pattern(regexp = "^[0-9]*")
+    private String celular;
 
     @NotNull
     private Double costo;
@@ -64,6 +66,14 @@ public class Tutor {
     private String password;
 
     @NotBlank
+    @Size(min = 8, message = "La contraseña debe contener al menos 8 caracteres")
+    @Pattern.List({
+            @Pattern(regexp = "(?=.*[0-9]).+", message = "La contraseña debe tener un digito."),
+            @Pattern(regexp = "(?=.*[a-z]).+", message = "La contraseña debe tener una minuscula."),
+            @Pattern(regexp = "(?=.*[A-Z]).+", message = "La contraseña debe tener una mayuscula."),
+            @Pattern(regexp = "(?=.*[!@#$%^&*+=?_()/\"\\.,<>~`;:]).+", message ="La contraseña debe tener un caracter especial."),
+            @Pattern(regexp = "(?=\\S+$).+", message = "La contraseña no debe tener espacios.")
+    })
     @Transient
     private String password1;
 

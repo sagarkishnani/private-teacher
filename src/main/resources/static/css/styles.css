@@ -284,10 +284,22 @@ footer {
 
 /* REGISTROS */
 
+/* LOGIN */
+
+.iniciarsesion {
+    height: 36rem;
+    background-color: var(--main-color);
+}
+
 /* ALUMNO */
 
 .registro-alumno {
   height: 60rem;
+  background-color: var(--main-color);
+}
+
+.registro-profesor {
+  height: 80rem;
   background-color: var(--main-color);
 }
 
