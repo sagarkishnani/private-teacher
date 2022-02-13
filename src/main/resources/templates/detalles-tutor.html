@@ -22,8 +22,9 @@
                     <h4 class="padded-top-xl costo"><strong>Costo por hora<span
                             style="float: right;">S/.[[*{#numbers.formatDecimal(costo, 1,'COMMA',0,'POINT')}]]</span></strong>
                     </h4>
-                    <div class="padded-top-xl"> <button type="submit" class="btn-main-filter"
-                                                        style="width:100%; padding-top: 12px; padding-bottom: 12px; font-weight: bold; font-size: 20px">Inscribirse</button></div>
+                    <div class="padded-top-xl">
+                        <a th:href="@{/usuario/inscribir/{idtutor}(idtutor=*{idtutor})}" type="submit" class="btn-main-filter"
+                                                        style="width:100%; padding-top: 12px; padding-bottom: 12px; font-weight: bold; font-size: 20px">Inscribirse</a></div>
                 </div>
             </div>
         </div>
