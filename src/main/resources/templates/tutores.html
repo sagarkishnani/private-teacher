@@ -10,59 +10,73 @@
 <body>
 <div layout:fragment="contenido_dinamico">
     <main>
-        <div class="container-fluid" style="background-color: rgb(241, 241, 241);">
-            <div class="row">
-                <div id="sidebar" class="col-3 filter padded-top sticky-top">
-                    <h6 class="padded-bottom">Cursos</h6>
-                    <ul class="list-group">
-                        <li class="list-group-item"><input class="form-check-input" type="checkbox" value=""
-                                id="flexCheckDefault">English for Law</li>
-                        <li class="list-group-item"><input class="form-check-input" type="checkbox" value=""
-                                id="flexCheckDefault">English for Engineering</li>
-                        <li class="list-group-item"><input class="form-check-input" type="checkbox" value=""
-                                id="flexCheckDefault">English for Business</li>
-                        <li class="list-group-item"><input class="form-check-input" type="checkbox" value=""
-                                id="flexCheckDefault">English for Architecture</li>
-                        <li class="list-group-item"><input class="form-check-input" type="checkbox" value=""
-                                id="flexCheckDefault">English for Medicine</li>
-                        <li class="list-group-item"><input class="form-check-input" type="checkbox" value=""
-                                id="flexCheckDefault">Exam Preparation</li>
-                    </ul>
-                    <div class="text-center padded-top-xl">
-                        <button type="submit" class="btn-main-filter">Aplicar filtro</button>
+        <form th:action="@{''}" method="post">
+            <div class="container-fluid" style="background-color: rgb(241, 241, 241);">
+                <div class="row">
+                    <div class="catalog-page-header">
+                        <section class="catalog-page-results" style="padding-top: 50px !important;">
+                            <div class="catalog-page-result-text container">
+                                <div class="row justify-content-center" style="justify-content: center">
+                                    <div class="col-xs-12 col-md-6 col-lg-4" th:text="${count} + ' profesores encontrados'"></div>
+                                    <div class="catalog-page__order-by-select hidden-md-down col-md-3 col-lg-3">
+                                        <div th:object="${orden}">
+                                            <select th:field="*{nameOrden}" class="form-select" onchange="this.form.submit()">
+                                                <option th:each="orden : ${ordenList}" th:value="${orden.nameOrden}" th:text="${orden.nameOrden}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                </div>
-                <div id="tutors" class="col-9">
-                    <div class="container-fluid">
-                        <div class="row justify-content-around padded-bottom-xl">
-                            <div th:each="tutor : ${tutores}" th:object="${tutor}" class="col-4 padded-bottom">
-                                <div class="card" style="width: 22rem; height: 32rem;">
-                                    <img th:src="@{/media/{foto}(foto=*{foto})}" height="300px" class="card-img-top" style="object-fit: cover" th:alt="*{nombreCompleto}">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="font-weight: bold">[[*{nombreCompleto}]]<span style="  padding: var(--pad-xs) !important;
-  float: right;
-  font-size: var(--font-sm);
-  font-family: var(--poppins);
-  font-weight: bold;
-  background-color: var(--second-color) !important;
-  color: var(--third-color);
-  border-radius: 6px;" class="price">S/.[[*{#numbers.formatDecimal(costo, 1,'COMMA',0,'POINT')}]]</span></h5>
-                                        <p class="card-text">[[*{descripcion}]]</p>
-                                        <hr>
-                                        <p class="card-course">
-                                            <strong>Curso:</strong> [[*{titulo}]] <span><button style="background-color: var(--fourth-color);
-  padding-top: var(--pad-xs);
-  padding-bottom: var(--pad-xs);
-  padding-right: var(--pad-sm);
-  padding-left: var(--pad-sm);
-  color: rgba(255, 255, 255, 0.857);
-  border-radius: 4px;
-  border: none;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  transition: transform 0.7s;
-  float: right;" class="btn-main-details">
-                                            <a th:href="@{/tutores/{idtutor}(idtutor=*{idtutor})}">Ver más</a></button></span>
-                                        </p>
+                    <div id="sidebar" class="col-3 filter padded-top sticky-top" th:object="${titulo}">
+                        <h6 class="padded-bottom">Cursos</h6>
+                        <ul class="list-group form-control" style="border: none;" id="checkbox-container">
+                            <li class="list-group-item" th:each="titulo : ${tituloList}">
+                                <input class="form-check-input" type="checkbox" th:id="${titulo.idTitulo}" th:value="${titulo.nameTitulo}"
+                                       id="flexCheckDefault" th:text="${titulo.nameTitulo}" th:field="*{nameTitulo}">
+                            </li>
+                        </ul>
+                        <div class="text-center padded-top-xl">
+                            <button type="submit" class="btn-main-filter">Aplicar filtro</button>
+                        </div>
+                    </div>
+                    <div id="tutors" class="col-9">
+                        <div class="container-fluid">
+                            <div th:classappend="'alert-' " + th:if="${mensaje != null}"
+                                 th:text="${mensaje}"
+                                 class="alert alert-success">
+                            </div>
+                            <div class="row justify-content-around padded-bottom-xl">
+                                <div th:each="tutor : ${tutores}" th:object="${tutor}" class="col-4 padded-bottom">
+                                    <div class="card" style="width: 22rem; height: 32rem;">
+                                        <img th:src="@{/media/{foto}(foto=*{foto})}" height="300px" class="card-img-top" style="object-fit: cover" th:alt="*{nombreCompleto}">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="font-weight: bold">[[*{nombreCompleto}]]<span style="  padding: var(--pad-xs) !important;
+      float: right;
+      font-size: var(--font-sm);
+      font-family: var(--poppins);
+      font-weight: bold;
+      background-color: var(--second-color) !important;
+      color: var(--third-color);
+      border-radius: 6px;" class="price">S/.[[*{#numbers.formatDecimal(costo, 1,'COMMA',0,'POINT')}]]</span></h5>
+                                            <p class="card-text">[[*{descripcion}]]</p>
+                                            <hr>
+                                            <p class="card-course">
+                                                <strong>Curso:</strong> [[*{titulo}]] <span><button style="background-color: var(--fourth-color);
+      padding-top: var(--pad-xs);
+      padding-bottom: var(--pad-xs);
+      padding-right: var(--pad-sm);
+      padding-left: var(--pad-sm);
+      color: rgba(255, 255, 255, 0.857);
+      border-radius: 4px;
+      border: none;
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      transition: transform 0.7s;
+      float: right;" class="btn-main-details">
+                                                <a th:href="@{/tutores/{idtutor}(idtutor=*{idtutor})}">Ver más</a></button></span>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -70,11 +84,29 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script>
+        var checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {},
+        $checkboxes = $("#checkbox-container :checkbox");
+
+        $checkboxes.on("change", function(){
+              $checkboxes.each(function(){
+                checkboxValues[this.id] = this.checked;
+              });
+
+              localStorage.setItem("checkboxValues", JSON.stringify(checkboxValues));
+        });
+
+        // On page load
+        $.each(checkboxValues, function(key, value) {
+          $("#" + key).prop('checked', value);
+        });
     </script>
 </div>
 </body>

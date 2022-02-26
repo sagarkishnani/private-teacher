@@ -43,7 +43,8 @@
                 </a>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="/mis-cursos">Mis cursos</a></li>
+                    <li><a class="dropdown-item" href="/mis-cursos" sec:authorize="hasRole('ROLE_ESTUDIANTE')">Mis cursos</a></li>
+                    <li><a class="dropdown-item" href="/tutores/mis-cursos" sec:authorize="hasRole('ROLE_TUTOR')">Mis cursos</a></li>
                     <li><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
                 </ul>
             </div>
